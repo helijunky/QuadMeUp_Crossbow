@@ -6,6 +6,7 @@
  *  ARDUINO_AVR_FEATHER32U4
  *  ARDUINO_SAMD_FEATHER_M0
  *  ARDUINO_ESP32_DEV
+ *  ARDUINO_TTGO_LoRa32_V1
  * 
  *  Leave commented for autodetect
  */

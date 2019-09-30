@@ -92,7 +92,8 @@ void SbusInput::loop(void)
 
 void SbusInput::start(void)
 {
-#ifdef ARDUINO_ESP32_DEV
+//#ifdef ARDUINO_ESP32_DEV
+#if defined(ARDUINO_ESP32_DEV) || defined(ARDUINO_TTGO_LoRa32_V1)
     _serial.begin(100000, SERIAL_8N2, SERIAL1_RX, SERIAL1_TX, false);
 #else 
     _serial.begin(100000, SERIAL_8N2);

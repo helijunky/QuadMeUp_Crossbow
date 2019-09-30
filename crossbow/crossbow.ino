@@ -32,7 +32,8 @@ Copyright (c) 20xx, MPL Contributor1 contrib1@example.net
     #define BUTTON_0_PIN    9 //Please verify
     #define BUTTON_1_PIN    10 //Please verify
 
-#elif defined (ARDUINO_ESP32_DEV) 
+//#elif defined ARDUINO_ESP32_DEV
+#elif defined(ARDUINO_ESP32_DEV) || defined(ARDUINO_TTGO_LoRa32_V1)
 
     #define LORA_SS_PIN     18
     #define LORA_RST_PIN    14
@@ -67,7 +68,9 @@ PlatformStorage storage;
 #elif defined(FEATURE_TX_INPUT_SBUS)
   #include "sbus.h"
 
-#ifdef ARDUINO_ESP32_DEV
+//#ifdef ARDUINO_ESP32_DEV
+#if defined(ARDUINO_ESP32_DEV) || defined(ARDUINO_TTGO_LoRa32_V1)
+
 
     HardwareSerial sbusInputSerial(1);
 
@@ -218,7 +221,8 @@ void setup(void)
 
 #endif
 
-#ifdef ARDUINO_ESP32_DEV
+//#ifdef ARDUINO_ESP32_DEV
+#if defined(ARDUINO_ESP32_DEV) || defined(ARDUINO_TTGO_LoRa32_V1)
     SPI.begin(SPI_SCK_PIN, SPI_MISO_PIN, SPI_MOSI_PIN, LORA_SS_PIN);
     
     //On ESP32 there are no interrupts here, we will have to check it manually

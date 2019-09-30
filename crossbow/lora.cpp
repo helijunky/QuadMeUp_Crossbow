@@ -283,7 +283,9 @@ int LoRaClass::read()
 
 void LoRaClass::onReceive(void(*callback)(int))
 {
-#ifndef ARDUINO_ESP32_DEV
+//#ifndef ARDUINO_ESP32_DEV
+#if !defined(ARDUINO_ESP32_DEV) && !defined(ARDUINO_TTGO_LoRa32_V1)
+
   _onReceive = callback;
 
   if (callback) {
@@ -550,7 +552,8 @@ void LoRaClass::bufferTransfer(uint8_t address, uint8_t buffer[], uint8_t size) 
   
   SPI.beginTransaction(_spiSettings);
   SPI.transfer(address);
-#ifndef ARDUINO_ESP32_DEV
+//#ifndef ARDUINO_ESP32_DEV
+#if !defined(ARDUINO_ESP32_DEV) && !defined(ARDUINO_TTGO_LoRa32_V1)
   SPI.transfer(buffer, size);
 #else 
   uint8_t out[size];
